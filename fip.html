@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Soul Search</title>
+</head>
+<body>
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Search input -->
+  <center>
+  </br>
+  <input type="text" id="searchInput" placeholder="Enter your search here..." style=width:80%;display:inline-block>
+  </br>
+  <button onclick="performSearch()" id="search">Search</button> 
+  <button onClick="showSettings()" class="hidden">Settings</button></br>
+</br>
+<div id="settings" class="hidden">
+    <label class="container">ACIM
+  <input type="checkbox" checked="checked" id="ACIM">
+  <span class="checkmark"></span>
+</label>
+
+  <input type="checkbox" id="display_sources" value="0">
+
+<label for="numberResults" class="container" style=padding-right:0px;>Number of Results:</label>
+<select id="numberResults" name="numberResults" class="container" style=padding-left:0px;padding-right:0px;>
+  <option value=3>3</option>
+  <option value=6>6</option>
+  <option value=9>9</option>
+</select>
+  </div>
+
+  <div class="loader" id="loader" style=display:none></div>
+</center>
+
+ 
+
+
+
+  <!-- Container to display results -->
+  
+  <div id="results" class="results"></div>
+
+  <script src="fip_script.js"></script>
+  <script>
+  	var input = document.getElementById("searchInput");
+  	 input.addEventListener("keypress", function(event) {
+	  // If the user presses the "Enter" key on the keyboard
+	  if (event.key === "Enter") {
+	    // Cancel the default action, if needed
+	    event.preventDefault();
+	    // Trigger the button element with a click
+	    document.getElementById("search").click();
+	  }
+	});
+	</script>
+
+</body>
+<style>
+.results{ 
+ padding-left: 30px;
+ padding-right:  30px;
+}
+/* Customize the label (the container) */
+.container {
+  display: inline;
+  position: relative;
+  padding-left: 35px;
+  padding-right: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.hidden {
+  display: none;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  margin: auto;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+a {
+  color: blue;
+  font-weight: bold;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+
+}
+
+a:active {
+  text-decoration: underline;
+}
+</style>
+</html>
